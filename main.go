@@ -1,27 +1,21 @@
 package main
 
 import (
-	seq "./sequence"
-	"fmt"
+    seq "./sequence"
+    "fmt"
 )
 
 const nodeId = 125
 
-func log(s seq.Sequence) {
-	fmt.Printf("IDs: %d\n", s.CurrVal())
+func log(seq seq.Sequence) {
+    fmt.Printf("PK: %d\n", seq.CurrVal())
 }
 
 func main() {
-	seq1 := seq.Snowflake{Node: seq.Node{Id: nodeId}}
+    seq := seq.Snowflake{Node: seq.Node{Id: nodeId}}
 
-	for i := 0; i <= 100; i++ {
-
-		//time.Sleep(500)
-		seq1.NextVal()
-		log(&seq1)
-	}
-
-	//seq2 := new(seq.Snowflake)
-	//seq2.Node = seq.Node{Id: NODE}
-	//log(seq2)
+    for i := 0; i <= 100; i++ {
+        seq.NextVal()
+        log(&seq)
+    }
 }
